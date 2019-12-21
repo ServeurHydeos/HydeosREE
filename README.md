@@ -1,4 +1,6 @@
 # HydeosREE
+HydeosRedisExecuteEverywhere
+
 Command execution plugin synchronized via Redis for Spigot and BungeeCord.
 Forks : ExecuteEverywhere from vemacs.
 
