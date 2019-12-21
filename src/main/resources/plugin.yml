@@ -1,0 +1,21 @@
+author: [antt0n,vemacs]
+main: fr.antt0n.hydeosree.bukkit.HydeosREE
+name: HydeosREE
+version: ${version}
+commands:
+  ee:
+    description: Sending a command for execution to all Bukkit servers connected to the same redis channel.
+    aliases: [executeeverywhere]
+    permission: executeeverywhere.use
+    usage: /ee <cmd>
+    permission-message: You don't have permission to use that.
+  eb:
+    description: Sending a command for execution to all BungeeCord servers connected to the same redis server.
+    aliases: [executebungee]
+    permission: executeeverywhere.use
+    usage: /eb <cmd>
+    permission-message: You don't have permission to use that.
+permissions:
+  executeeverywhere.use:
+    description: Allows you to send a command to run on all servers.
+    default: op

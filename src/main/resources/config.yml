@@ -1,0 +1,7 @@
+# Redis configuration
+ip: 127.0.0.1
+port: 6379
+password: ""
+# Channel names
+SpigotChannel: "default-hree-spigot"
+BungeeChannel: "default-hree-bungee"

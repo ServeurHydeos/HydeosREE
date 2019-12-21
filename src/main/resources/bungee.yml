@@ -1,0 +1,4 @@
+author: [antt0n,vemacs]
+main: fr.antt0n.hydeosree.bungee.HydeosREE
+name: HydeosREE
+version: ${version}
