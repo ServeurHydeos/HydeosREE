@@ -47,7 +47,7 @@ public class HydeosREE extends Plugin implements Listener {
                 } catch (Exception e) {
                     e.printStackTrace();
                     pool.returnBrokenResource(jedis);
-                    getLogger().severe("Unable to connect to Redis server.");
+                    getLogger().severe("Le serveur redis est hors-ligne ou rencontre un problème.");
                     return;
                 }
                 pool.returnResource(jedis);            }
@@ -58,12 +58,13 @@ public class HydeosREE extends Plugin implements Listener {
     public void onDisable() {
         eeSubscriber.unsubscribe();
         pool.destroy();
+		this.getLogger().info("§cHydeosREE désactivé.");
     }
 
     public class EESubscriber extends JedisPubSub {
         @Override
         public void onMessage(String channel, final String msg) {
-            HydeosREE.instance.getLogger().info("Dispatching /" + msg);
+            HydeosREE.instance.getLogger().info("Lancement de la commande /" + msg);
             ProxyServer ps = ProxyServer.getInstance();
             ps.getPluginManager().dispatchCommand(ps.getConsole(), msg);
         }
