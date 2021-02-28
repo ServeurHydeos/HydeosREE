@@ -44,7 +44,7 @@ public class HydeosREE extends JavaPlugin implements Listener {
                 } catch (Exception e) {
                     e.printStackTrace();
                     pool.returnBrokenResource(jedis);
-                    getLogger().severe("Unable to connect to Redis server.");
+                    getLogger().severe("Le serveur est hors-ligne ou ne répond pas.");
                     return;
                 }
                 pool.returnResource(jedis);
@@ -54,6 +54,7 @@ public class HydeosREE extends JavaPlugin implements Listener {
 
     @Override
     public void onDisable() {
+		HydeosREE.instance.getLogger().info("§cDésactivation du plugin...");
         eeSubscriber.unsubscribe();
         pool.destroy();
     }
@@ -83,7 +84,7 @@ public class HydeosREE extends JavaPlugin implements Listener {
                 pool.returnResource(jedis);
             }
         }.runTaskAsynchronously(this);
-        sender.sendMessage(ChatColor.GREEN + "Sent /" + cmdString + " for execution.");
+        sender.sendMessage(ChatColor.GREEN + "Envoi de la commande /" + cmdString);
         return true;
     }
 
@@ -94,7 +95,7 @@ public class HydeosREE extends JavaPlugin implements Listener {
              new BukkitRunnable() {
                 @Override
                 public void run() {
-                    HydeosREE.instance.getLogger().info("Dispatching /" + msg);
+                    HydeosREE.instance.getLogger().info("Execution de la commande /" + msg);
                     getServer().dispatchCommand(getServer().getConsoleSender(), msg);
                 }
             }.runTask(HydeosREE.instance);
